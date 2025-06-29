@@ -42,8 +42,7 @@ describe('Updating records', ()=>{
        const artCount = await Student.findOne({name : 'Jason'})
        const student = await Student.updateOne({name : 'Jason'},{$mul :{grade : artCount.articleCount}})
        const res = await Student.find({name : 'Jason'})
-       assert(res[0].grade == 50)
+       assert(res[0].grade === 50)
        console.log(res);
     })
-
 });
