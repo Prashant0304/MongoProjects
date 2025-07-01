@@ -12,10 +12,18 @@ const StudentSchema = new Schema({
         }
     },
     studentNumber : Number, 
-    articleCount : Number,
     grade : Number,
-    articles :[ArticleSchema]
+    articles :[ArticleSchema],
+    articleBlog:[{
+        type: Schema.Types.ObjectId,
+        ref:'articleBlog'
+    }]
 });
+
+StudentSchema.virtual('articleCount').get(function() {
+    // console.log('Run the getter function')
+    return this.articles.length
+})
 
 const Student = mongoose.model("student",StudentSchema);
 
