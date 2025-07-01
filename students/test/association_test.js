@@ -14,9 +14,6 @@ describe('Association Test',() =>{
         jason.articleBlog.push(artcleBlog);
         articleBlog.comments.push(comment);
         comment.students = jason;
-
-       
-
         Promise.all([jason.save(), articleBlog.save(), comment.save()])
         .then(() => done())
     })
